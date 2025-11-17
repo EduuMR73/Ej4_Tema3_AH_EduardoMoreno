@@ -1,0 +1,17 @@
+ion-card-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  
+  ion-icon {
+    font-size: 1.5rem;
+  }
+}
+
+ion-item {
+  --background: transparent;
+  
+  ion-icon {
+    color: var(--ion-color-primary-tint);
+  }
+}

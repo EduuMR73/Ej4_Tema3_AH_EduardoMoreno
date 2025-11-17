@@ -1,0 +1,52 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>
+      Sensores, Cámara y Audio
+    </ion-title>
+
+    <!-- Botón para activar/desactivar modo oscuro -->
+    <ion-buttons slot="end">
+      <ion-button (click)="toggleDarkMode()">
+        <ion-icon [name]="isDarkMode ? 'moon' : 'moon-outline'"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" color="light">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Sensores App</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- Mensaje EUREKA (mostrado en componente padre) -->
+  <ion-card *ngIf="showEureka" color="warning" style="text-align:center; margin: 20px;">
+    <ion-card-content>
+      <div class="eureka-message">
+        🎉 ¡EUREKA! 🎉
+      </div>
+      <p style="font-size: 1rem; margin: 0;">
+        Luminosidad baja detectada - Linterna activada
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Componente GPS -->
+  <app-gps></app-gps>
+
+  <!-- Componente Sensores -->
+  <app-sensores (luminosityBelowThreshold)="onLuminosityChange($event)"></app-sensores>
+
+  <!-- Componente Cámara -->
+  <app-camara></app-camara>
+
+  <!-- Información adicional -->
+  <ion-card class="sensor-card">
+    <ion-card-content style="text-align: center; padding: 15px;">
+      <p style="font-size: 0.85rem; color: var(--ion-color-medium); margin: 0;">
+        💡 Cubre el sensor de luminosidad con la mano para activar la función Eureka
+      </p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

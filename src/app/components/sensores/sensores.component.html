@@ -1,0 +1,75 @@
+<ion-card class="sensor-card" color="secondary">
+  <ion-card-header>
+    <ion-card-title>
+      <ion-icon name="speedometer-outline"></ion-icon>
+      Sensores del Dispositivo
+    </ion-card-title>
+  </ion-card-header>
+  
+  <ion-card-content>
+    <h3 style="margin-top: 0; color: var(--ion-color-secondary-contrast);">
+      <ion-icon name="speedometer-outline"></ion-icon>
+      Acelerómetro
+    </h3>
+    
+    <ion-item lines="none">
+      <ion-label>
+        <h4 class="sensor-label">Eje X</h4>
+        <p class="sensor-value">{{ accelX.toFixed(2) }} m/s²</p>
+      </ion-label>
+    </ion-item>
+    
+    <ion-item lines="none">
+      <ion-label>
+        <h4 class="sensor-label">Eje Y</h4>
+        <p class="sensor-value">{{ accelY.toFixed(2) }} m/s²</p>
+      </ion-label>
+    </ion-item>
+    
+    <ion-item lines="none">
+      <ion-label>
+        <h4 class="sensor-label">Eje Z</h4>
+        <p class="sensor-value">{{ accelZ.toFixed(2) }} m/s²</p>
+      </ion-label>
+    </ion-item>
+
+    <hr style="border-color: rgba(255,255,255,0.2); margin: 15px 0;">
+
+    <h3 style="color: var(--ion-color-secondary-contrast);">
+      <ion-icon name="water-outline"></ion-icon>
+      Humedad Relativa
+    </h3>
+    
+    <ion-item lines="none">
+      <ion-label>
+        <h4 class="sensor-label">Humedad Ambiente</h4>
+        <p class="sensor-value">{{ humidity.toFixed(1) }}%</p>
+      </ion-label>
+      <ion-badge slot="end" color="tertiary">Simulada</ion-badge>
+    </ion-item>
+
+    <hr style="border-color: rgba(255,255,255,0.2); margin: 15px 0;">
+
+    <h3 style="color: var(--ion-color-secondary-contrast);">
+      <ion-icon name="sunny-outline"></ion-icon>
+      Luminosidad Ambiente
+    </h3>
+    
+    <ion-item lines="none">
+      <ion-label>
+        <h4 class="sensor-label">Nivel de Luz</h4>
+        <p class="sensor-value">{{ luminosity.toFixed(0) }} lux</p>
+      </ion-label>
+      <ion-badge slot="end" [color]="getLuminosityColor()">
+        {{ getLuminosityStatus() }}
+      </ion-badge>
+    </ion-item>
+    
+    <ion-item *ngIf="luminosity < 50" lines="none" color="danger">
+      <ion-label>
+        <h4>⚠️ Luminosidad muy baja detectada</h4>
+        <p style="font-size: 0.8rem;">Se activará la linterna automáticamente</p>
+      </ion-label>
+    </ion-item>
+  </ion-card-content>
+</ion-card>

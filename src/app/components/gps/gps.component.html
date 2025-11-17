@@ -1,0 +1,55 @@
+<ion-card class="sensor-card" color="primary">
+  <ion-card-header>
+    <ion-card-title>
+      <ion-icon name="location-outline"></ion-icon>
+      GPS - Ubicación en Tiempo Real
+    </ion-card-title>
+  </ion-card-header>
+  
+  <ion-card-content>
+    @if (isLoading) {
+      <div style="text-align: center; padding: 20px;">
+        <ion-spinner name="crescent"></ion-spinner>
+        <p>Obteniendo ubicación GPS...</p>
+      </div>
+    } @else if (error) {
+      <ion-item color="danger">
+        <ion-label>{{ error }}</ion-label>
+      </ion-item>
+    } @else {
+      <ion-item lines="none">
+        <ion-icon name="navigate-outline" slot="start"></ion-icon>
+        <ion-label>
+          <h3 class="sensor-label">Latitud</h3>
+          <p class="sensor-value">{{ latitude?.toFixed(6) }}°</p>
+        </ion-label>
+      </ion-item>
+      
+      <ion-item lines="none">
+        <ion-icon name="navigate-outline" slot="start"></ion-icon>
+        <ion-label>
+          <h3 class="sensor-label">Longitud</h3>
+          <p class="sensor-value">{{ longitude?.toFixed(6) }}°</p>
+        </ion-label>
+      </ion-item>
+      
+      @if (accuracy !== null) {
+        <ion-item lines="none">
+          <ion-label>
+            <h3 class="sensor-label">Precisión</h3>
+            <p>{{ accuracy?.toFixed(2) }} metros</p>
+          </ion-label>
+        </ion-item>
+      }
+      
+      @if (altitude !== null) {
+        <ion-item lines="none">
+          <ion-label>
+            <h3 class="sensor-label">Altitud</h3>
+            <p>{{ altitude?.toFixed(2) }} metros</p>
+          </ion-label>
+        </ion-item>
+      }
+    }
+  </ion-card-content>
+</ion-card>

@@ -1,0 +1,34 @@
+<ion-card class="sensor-card" color="tertiary">
+  <ion-card-header>
+    <ion-card-title>
+      <ion-icon name="camera-outline"></ion-icon>
+      Cámara del Dispositivo
+    </ion-card-title>
+  </ion-card-header>
+  
+  <ion-card-content>
+    <div class="button-container">
+      <ion-button expand="block" (click)="takePicture()" color="light">
+        <ion-icon slot="start" name="camera-outline"></ion-icon>
+        Tomar Foto
+      </ion-button>
+      
+      <ion-button expand="block" (click)="selectFromGallery()" color="light" fill="outline">
+        <ion-icon slot="start" name="images-outline"></ion-icon>
+        Seleccionar de Galería
+      </ion-button>
+    </div>
+
+    @if (imageUrl) {
+      <div class="image-preview">
+        <h4>Imagen Capturada:</h4>
+        <ion-img [src]="imageUrl" alt="Foto capturada"></ion-img>
+      </div>
+    } @else {
+      <div class="placeholder">
+        <ion-icon name="camera-outline"></ion-icon>
+        <p>No hay imagen capturada</p>
+      </div>
+    }
+  </ion-card-content>
+</ion-card>
